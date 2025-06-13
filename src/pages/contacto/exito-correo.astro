@@ -1,0 +1,150 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionContainer from "../../components/SectionContainer.astro";
+---
+
+<Layout 
+  title="Mensaje Enviado - Agua Máxima" 
+  description="Tu mensaje ha sido enviado exitosamente por correo"
+>
+  <SectionContainer>
+    <div class="relative isolate px-6 pt-14 pb-20 lg:px-8 min-h-screen flex items-center">
+      <div class="mx-auto max-w-4xl text-center">
+        
+        <!-- Success Animation -->
+        <div class="mb-8">
+          <div class="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+            <svg class="w-12 h-12 text-[#0288c7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          
+          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">
+            <span class="text-[#0288c7]">¡Mensaje</span>
+            <span class="text-[#083049]">Enviado!</span>
+          </h1>
+          
+          <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Tu mensaje ha sido enviado exitosamente por correo electrónico. Te responderemos dentro de las próximas 2 horas.
+          </p>
+        </div>
+
+        <!-- Status Steps -->
+        <div class="mb-12">
+          <div class="flex items-center justify-center space-x-4 md:space-x-8">
+            <div class="flex items-center">
+              <div class="w-8 h-8 bg-[#0288c7] text-white rounded-full flex items-center justify-center text-sm font-medium">
+                ✓
+              </div>
+              <span class="ml-2 text-sm font-medium text-[#0288c7]">Información</span>
+            </div>
+            <div class="w-8 h-0.5 bg-[#0288c7]"></div>
+            <div class="flex items-center">
+              <div class="w-8 h-8 bg-[#0288c7] text-white rounded-full flex items-center justify-center text-sm font-medium">
+                ✓
+              </div>
+              <span class="ml-2 text-sm font-medium text-[#0288c7]">Validación</span>
+            </div>
+            <div class="w-8 h-0.5 bg-[#0288c7]"></div>
+            <div class="flex items-center">
+              <div class="w-8 h-8 bg-[#0288c7] text-white rounded-full flex items-center justify-center text-sm font-medium">
+                ✓
+              </div>
+              <span class="ml-2 text-sm font-medium text-[#0288c7]">Enviado</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email Info -->
+        <div class="bg-gradient-to-br from-[#bae7fd] to-blue-100 rounded-xl border border-[#7dd5fc] p-6 mb-8">
+          <div class="flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-[#0288c7] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            <h2 class="text-lg font-semibold text-gray-900">Correo Electrónico Enviado</h2>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Hemos recibido tu mensaje y lo hemos enviado al equipo correspondiente. Te responderemos lo antes posible.
+          </p>
+          <div class="bg-white/50 rounded-lg p-4">
+            <p class="text-sm text-gray-600">
+              <strong>Tiempo de respuesta estimado:</strong> 30 minutos - 2 horas<br>
+              <strong>Horario de atención:</strong> Lunes a Domingo, 8:00 AM - 6:00 PM
+            </p>
+          </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+          <div class="bg-white rounded-xl border border-[#7dd5fc]/30 p-6 text-center">
+            <div class="w-16 h-16 bg-[#bae7fd]/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-[#0288c7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[#083049] mb-2">Revisión</h3>
+            <p class="text-gray-600 text-sm">Nuestro equipo revisará tu mensaje dentro de los próximos 30 minutos</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-[#7dd5fc]/30 p-6 text-center">
+            <div class="w-16 h-16 bg-[#bae7fd]/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-[#0288c7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[#083049] mb-2">Respuesta</h3>
+            <p class="text-gray-600 text-sm">Te responderemos por correo electrónico con la información solicitada</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-[#7dd5fc]/30 p-6 text-center">
+            <div class="w-16 h-16 bg-[#bae7fd]/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-[#0288c7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[#083049] mb-2">Seguimiento</h3>
+            <p class="text-gray-600 text-sm">Haremos seguimiento para asegurar que recibas la mejor atención</p>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" 
+             class="inline-flex items-center px-6 py-3 text-[#0288c7] border-2 border-[#0288c7] rounded-lg font-medium hover:bg-[#0288c7] hover:text-white transition-all duration-300">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            Enviar Otro Mensaje
+          </a>
+          
+          <a href="/" 
+             class="inline-flex items-center px-6 py-3 bg-[#083049] hover:bg-[#0288c7] text-white font-medium rounded-lg transition-all duration-300">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Volver al Inicio
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </SectionContainer>
+</Layout>
+
+<style>
+  /* Success animation */
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+</style> 

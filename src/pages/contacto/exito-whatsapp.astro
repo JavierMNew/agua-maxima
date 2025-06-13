@@ -1,0 +1,187 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionContainer from "../../components/SectionContainer.astro";
+---
+
+<Layout 
+  title="Mensaje Enviado - Agua Máxima" 
+  description="Tu mensaje ha sido enviado exitosamente a WhatsApp"
+>
+  <SectionContainer>
+    <div class="relative isolate px-6 pt-14 pb-20 lg:px-8 min-h-screen flex items-center">
+      <div class="mx-auto max-w-4xl text-center">
+        
+        <!-- Success Animation -->
+        <div class="mb-8">
+          <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+            <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          
+          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">
+            <span class="text-green-600">¡Mensaje</span>
+            <span class="text-[#083049]">Enviado!</span>
+          </h1>
+          
+          <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Tu mensaje ha sido enviado exitosamente a WhatsApp. Nos pondremos en contacto contigo muy pronto.
+          </p>
+        </div>
+
+        <!-- Status Steps -->
+        <div class="mb-12">
+          <div class="flex items-center justify-center space-x-4 md:space-x-8">
+            <div class="flex items-center">
+              <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                ✓
+              </div>
+              <span class="ml-2 text-sm font-medium text-green-600">Información</span>
+            </div>
+            <div class="w-8 h-0.5 bg-green-500"></div>
+            <div class="flex items-center">
+              <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                ✓
+              </div>
+              <span class="ml-2 text-sm font-medium text-green-600">Preparado</span>
+            </div>
+            <div class="w-8 h-0.5 bg-green-500"></div>
+            <div class="flex items-center">
+              <div class="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-medium">
+                ✓
+              </div>
+              <span class="ml-2 text-sm font-medium text-green-600">Enviado</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- WhatsApp Info -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl border border-green-200 p-6 mb-8">
+          <div class="flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-green-600 mr-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488z"/>
+            </svg>
+            <h2 class="text-lg font-semibold text-gray-900">WhatsApp Abierto</h2>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Se ha abierto WhatsApp con tu mensaje pre-escrito. Si no se abrió automáticamente, puedes hacer clic en el botón de abajo.
+          </p>
+          <button id="open-whatsapp-again" 
+                  class="inline-flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg transition-colors duration-300">
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.570-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488z"/>
+            </svg>
+            Abrir WhatsApp Nuevamente
+          </button>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+          <div class="bg-white rounded-xl border border-[#7dd5fc]/30 p-6 text-center">
+            <div class="w-16 h-16 bg-[#bae7fd]/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-[#0288c7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[#083049] mb-2">Respuesta Rápida</h3>
+            <p class="text-gray-600 text-sm">Te responderemos en WhatsApp dentro de los próximos 15 minutos</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-[#7dd5fc]/30 p-6 text-center">
+            <div class="w-16 h-16 bg-[#bae7fd]/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-[#0288c7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[#083049] mb-2">Confirmación</h3>
+            <p class="text-gray-600 text-sm">Confirmaremos tu consulta y te ayudaremos con lo que necesites</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-[#7dd5fc]/30 p-6 text-center">
+            <div class="w-16 h-16 bg-[#bae7fd]/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-[#0288c7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[#083049] mb-2">Seguimiento</h3>
+            <p class="text-gray-600 text-sm">Daremos seguimiento a tu consulta para brindarte el mejor servicio</p>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" 
+             class="inline-flex items-center px-6 py-3 text-[#0288c7] border-2 border-[#0288c7] rounded-lg font-medium hover:bg-[#0288c7] hover:text-white transition-all duration-300">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+            Enviar Otro Mensaje
+          </a>
+          
+          <a href="/" 
+             class="inline-flex items-center px-6 py-3 bg-[#083049] hover:bg-[#0288c7] text-white font-medium rounded-lg transition-all duration-300">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Volver al Inicio
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </SectionContainer>
+</Layout>
+
+<style>
+  /* Success animation */
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+</style>
+
+<script>
+  function initializeWhatsAppSuccess() {
+    // Get WhatsApp URL from sessionStorage if available
+    const whatsappUrl = sessionStorage.getItem('whatsappUrl');
+    
+    // Handle WhatsApp button click
+    const whatsappBtn = document.getElementById('open-whatsapp-again');
+    whatsappBtn?.addEventListener('click', function() {
+      if (whatsappUrl) {
+        window.open(whatsappUrl, '_blank');
+      } else {
+        // Fallback to general WhatsApp
+        window.open('https://wa.me/529931156969', '_blank');
+      }
+    });
+
+    // Clean up sessionStorage
+    if (whatsappUrl) {
+      sessionStorage.removeItem('whatsappUrl');
+    }
+  }
+
+  // Initialize when DOM is ready or immediately if already loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeWhatsAppSuccess);
+  } else {
+    initializeWhatsAppSuccess();
+  }
+
+  // Also execute when the page is visible (for navigation between pages)
+  document.addEventListener('astro:page-load', initializeWhatsAppSuccess);
+  
+  // Backup for manual navigation
+  window.addEventListener('load', initializeWhatsAppSuccess);
+</script> 

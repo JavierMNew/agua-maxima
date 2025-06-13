@@ -1,0 +1,191 @@
+---
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  SignInButton,
+} from "@clerk/astro/components";
+---
+
+<!-- Header Sticky -->
+<header class="sticky top-0 z-50 backdrop-blur-sm shadow-sm">
+  <div
+    class="grid grid-cols-3 items-center py-4 w-full xl:w-[1120px] mx-auto px-4"
+  >
+    <!-- Logo -->
+    <div class="flex items-center">
+      <a
+        href="/"
+        class="text-xl font-bold hover:text-[#0288c7] transition-colors duration-300"
+      >
+        Agua Máxima
+      </a>
+    </div>
+
+    <!-- Desktop Navigation - Centered -->
+    <nav class="hidden md:flex flex-row gap-x-8 justify-center opacity-90">
+      <a href="/" class="hover:text-[#0288c7] transition-colors duration-300"
+        >Inicio</a
+      >
+      <a
+        href="/nosotros"
+        class="hover:text-[#0288c7] transition-colors duration-300">Nosotros</a
+      >
+      <a
+        href="/productos"
+        class="hover:text-[#0288c7] transition-colors duration-300">Productos</a
+      >
+    </nav>
+
+    <!-- Desktop CTA Buttons -->
+    <div class="hidden md:flex items-center gap-3 justify-end">
+      <!-- User Button -->
+      <SignedOut>
+        <SignInButton mode="modal" />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+      <!-- Solicitar Button -->
+      <a
+        href="/solicitar"
+        class="bg-[#0288c7] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#083049] transition-colors duration-300"
+      >
+        Solicitar
+      </a>
+    </div>
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-button"
+      class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-[#0288c7] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#0288c7] transition-colors duration-300"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Abrir menú principal</span>
+      <!-- Icon when menu is closed -->
+      <svg
+        id="menu-icon-closed"
+        class="block h-6 w-6"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+      <!-- Icon when menu is open -->
+      <svg
+        id="menu-icon-open"
+        class="hidden h-6 w-6"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="md:hidden hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-100">
+      <a
+        href="/"
+        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#0288c7] hover:bg-gray-50 transition-colors duration-300"
+      >
+        Inicio
+      </a>
+      <a
+        href="/nosotros"
+        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#0288c7] hover:bg-gray-50 transition-colors duration-300"
+      >
+        Nosotros
+      </a>
+      <a
+        href="/productos"
+        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#0288c7] hover:bg-gray-50 transition-colors duration-300"
+      >
+        Productos
+      </a>
+      <!-- Mobile Solicitar Button -->
+      <div class="pt-2 pb-2 border-t border-gray-200">
+        <a
+          href="/solicitar"
+          class="block mx-3 px-4 py-2 bg-[#0288c7] text-white text-center rounded-lg font-semibold hover:bg-[#083049] transition-colors duration-300"
+        >
+          Solicitar
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Mobile Menu Functionality
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIconClosed = document.getElementById("menu-icon-closed");
+    const menuIconOpen = document.getElementById("menu-icon-open");
+
+    if (mobileMenuButton && mobileMenu && menuIconClosed && menuIconOpen) {
+      mobileMenuButton.addEventListener("click", function () {
+        const isExpanded =
+          mobileMenuButton.getAttribute("aria-expanded") === "true";
+
+        // Toggle menu visibility
+        mobileMenu.classList.toggle("hidden");
+
+        // Toggle icons
+        menuIconClosed.classList.toggle("hidden");
+        menuIconClosed.classList.toggle("block");
+        menuIconOpen.classList.toggle("hidden");
+        menuIconOpen.classList.toggle("block");
+
+        // Update aria-expanded
+        mobileMenuButton.setAttribute(
+          "aria-expanded",
+          (!isExpanded).toString()
+        );
+      });
+
+      // Close menu when clicking on links
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", function () {
+          mobileMenu.classList.add("hidden");
+          menuIconClosed.classList.remove("hidden");
+          menuIconClosed.classList.add("block");
+          menuIconOpen.classList.add("hidden");
+          menuIconOpen.classList.remove("block");
+          mobileMenuButton.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener("click", function (event) {
+        const target = event.target as Node;
+        if (
+          !mobileMenuButton.contains(target) &&
+          !mobileMenu.contains(target)
+        ) {
+          mobileMenu.classList.add("hidden");
+          menuIconClosed.classList.remove("hidden");
+          menuIconClosed.classList.add("block");
+          menuIconOpen.classList.add("hidden");
+          menuIconOpen.classList.remove("block");
+          mobileMenuButton.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+  });
+</script>
