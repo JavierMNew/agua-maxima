@@ -1,0 +1,218 @@
+---
+// Obtener la URL actual para determinar qué enlace debe estar activo
+const currentPath = Astro.url.pathname;
+
+// Función para determinar si un enlace está activo
+const isActive = (path: string) => {
+  if (path === '/admin' && currentPath === '/admin') return true;
+  if (path !== '/admin' && currentPath.startsWith(path)) return true;
+  return false;
+};
+
+// Clases para el botón activo e inactivo
+const activeClasses = "middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg bg-gradient-to-tr from-cyan-600 to-blue-500 text-white shadow-md shadow-cyan-500/20 hover:shadow-lg hover:shadow-cyan-500/40 active:opacity-[0.85] w-full flex items-center gap-4 px-4 capitalize cursor-pointer";
+const inactiveClasses = "middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize cursor-pointer";
+---
+
+<aside
+  class="bg-gradient-to-br from-blue-900 to-blue-950 w-72 rounded-xl m-4 h-[calc(100vh-32px)] flex-shrink-0"
+>
+  <div class="flex justify-center items-center border-b border-white/20">
+    <a class="flex items-center gap-4 py-6 px-8" href="/admin">
+      <img src="/logo.webp" alt="Agua Máxima" class="w-10 h-10" />
+      <svg
+        width="122.38"
+        height="19.76"
+        viewBox="0 0 122.38 19.76"
+        xmlns="http://www.w3.org/2000/svg"
+        ><g
+          id="svgGroup"
+          stroke-linecap="round"
+          fill-rule="evenodd"
+          font-size="9pt"
+          stroke="#ffffff"
+          stroke-width="0.25mm"
+          fill="#ffffff"
+          style="stroke:#ffffff;stroke-width:0.25mm;fill:#ffffff"
+          ><path
+            d="M 56.78 15.04 L 55.04 15.04 L 55.04 0.9 L 57.68 0.9 L 61.92 8.68 L 66.1 0.9 L 68.68 0.9 L 68.68 15.04 L 66.94 15.04 L 66.94 2.74 L 62.28 11.34 L 61.48 11.34 L 56.78 2.74 L 56.78 15.04 Z M 99.24 15.04 L 97.54 15.04 L 97.54 4.5 L 99.18 4.5 L 99.26 5.76 Q 99.6 5.28 100.03 4.98 Q 100.46 4.68 100.99 4.53 Q 101.52 4.38 102.12 4.38 Q 103.22 4.38 103.9 4.85 Q 104.58 5.32 104.92 6.08 Q 105.28 5.54 105.75 5.16 Q 106.22 4.78 106.81 4.58 Q 107.4 4.38 108.12 4.38 Q 109.28 4.38 109.99 4.88 Q 110.7 5.38 111.02 6.23 Q 111.34 7.08 111.34 8.14 L 111.34 15.04 L 109.64 15.04 L 109.64 9 Q 109.64 8.48 109.59 7.94 Q 109.54 7.4 109.34 6.93 Q 109.14 6.46 108.75 6.17 Q 108.36 5.88 107.66 5.88 Q 107 5.88 106.55 6.19 Q 106.1 6.5 105.82 7.02 Q 105.54 7.54 105.42 8.13 Q 105.3 8.72 105.3 9.3 L 105.3 15.04 L 103.6 15.04 L 103.6 8.98 Q 103.6 8.48 103.55 7.94 Q 103.5 7.4 103.33 6.93 Q 103.16 6.46 102.77 6.17 Q 102.38 5.88 101.7 5.88 Q 100.74 5.88 100.2 6.43 Q 99.66 6.98 99.45 7.77 Q 99.24 8.56 99.24 9.32 L 99.24 15.04 Z M 14.7 16.62 L 16.46 16.62 Q 16.62 17.22 17.06 17.58 Q 17.5 17.94 18.08 18.09 Q 18.66 18.24 19.22 18.24 Q 20.3 18.24 20.97 17.81 Q 21.64 17.38 21.94 16.63 Q 22.24 15.88 22.24 14.92 L 22.24 13.46 Q 21.9 14.06 21.34 14.44 Q 20.78 14.82 20.12 14.99 Q 19.46 15.16 18.76 15.16 Q 17.16 15.16 16.14 14.45 Q 15.12 13.74 14.63 12.53 Q 14.14 11.32 14.14 9.8 Q 14.14 8.28 14.64 7.05 Q 15.14 5.82 16.18 5.1 Q 17.22 4.38 18.84 4.38 Q 19.76 4.38 20.7 4.72 Q 21.64 5.06 22.24 5.82 L 22.32 4.5 L 23.94 4.5 L 23.94 14.96 Q 23.94 16.44 23.41 17.52 Q 22.88 18.6 21.81 19.18 Q 20.74 19.76 19.12 19.76 Q 18.04 19.76 17.12 19.43 Q 16.2 19.1 15.56 18.4 Q 14.92 17.7 14.7 16.62 Z M 83.72 15.04 L 81.8 15.04 L 85.56 9.66 L 81.98 4.5 L 84.02 4.5 L 86.7 8.5 L 89.3 4.5 L 91.28 4.5 L 87.72 9.72 L 91.54 15.04 L 89.52 15.04 L 86.6 11.02 L 83.72 15.04 Z M 26.58 10.44 L 26.58 4.5 L 28.28 4.5 L 28.28 10.36 Q 28.28 11.4 28.58 12.14 Q 28.88 12.88 29.49 13.27 Q 30.1 13.66 31.02 13.66 Q 31.98 13.66 32.6 13.27 Q 33.22 12.88 33.51 12.14 Q 33.8 11.4 33.8 10.36 L 33.8 4.5 L 35.5 4.5 L 35.5 10.44 Q 35.5 12.84 34.35 14 Q 33.2 15.16 31.02 15.16 Q 28.84 15.16 27.71 14 Q 26.58 12.84 26.58 10.44 Z M 1.88 15.04 L 0 15.04 L 5.26 0.9 L 7.76 0.9 L 13 15.04 L 11.12 15.04 L 10 12 L 3 12 L 1.88 15.04 Z M 41.84 8.86 L 44.94 8.86 Q 44.94 7.96 44.69 7.3 Q 44.44 6.64 43.88 6.27 Q 43.32 5.9 42.4 5.9 Q 41.84 5.9 41.36 6.02 Q 40.88 6.14 40.54 6.4 Q 40.2 6.66 40.04 7.1 L 38.22 7.1 Q 38.36 6.38 38.77 5.87 Q 39.18 5.36 39.77 5.03 Q 40.36 4.7 41.04 4.54 Q 41.72 4.38 42.4 4.38 Q 44.68 4.38 45.64 5.72 Q 46.6 7.06 46.6 9.34 L 46.6 15.04 L 45.18 15.04 L 45.08 13.7 Q 44.64 14.3 44.02 14.62 Q 43.4 14.94 42.75 15.05 Q 42.1 15.16 41.52 15.16 Q 40.8 15.16 40.13 14.97 Q 39.46 14.78 38.93 14.39 Q 38.4 14 38.09 13.41 Q 37.78 12.82 37.78 12.04 Q 37.78 11.14 38.11 10.52 Q 38.44 9.9 39 9.54 Q 39.56 9.18 40.3 9.02 Q 41.04 8.86 41.84 8.86 Z M 75.46 8.86 L 78.56 8.86 Q 78.56 7.96 78.31 7.3 Q 78.06 6.64 77.5 6.27 Q 76.94 5.9 76.02 5.9 Q 75.46 5.9 74.98 6.02 Q 74.5 6.14 74.16 6.4 Q 73.82 6.66 73.66 7.1 L 71.84 7.1 Q 71.98 6.38 72.39 5.87 Q 72.8 5.36 73.39 5.03 Q 73.98 4.7 74.66 4.54 Q 75.34 4.38 76.02 4.38 Q 78.3 4.38 79.26 5.72 Q 80.22 7.06 80.22 9.34 L 80.22 15.04 L 78.8 15.04 L 78.7 13.7 Q 78.26 14.3 77.64 14.62 Q 77.02 14.94 76.37 15.05 Q 75.72 15.16 75.14 15.16 Q 74.42 15.16 73.75 14.97 Q 73.08 14.78 72.55 14.39 Q 72.02 14 71.71 13.41 Q 71.4 12.82 71.4 12.04 Q 71.4 11.14 71.73 10.52 Q 72.06 9.9 72.62 9.54 Q 73.18 9.18 73.92 9.02 Q 74.66 8.86 75.46 8.86 Z M 117.62 8.86 L 120.72 8.86 Q 120.72 7.96 120.47 7.3 Q 120.22 6.64 119.66 6.27 Q 119.1 5.9 118.18 5.9 Q 117.62 5.9 117.14 6.02 Q 116.66 6.14 116.32 6.4 Q 115.98 6.66 115.82 7.1 L 114 7.1 Q 114.14 6.38 114.55 5.87 Q 114.96 5.36 115.55 5.03 Q 116.14 4.7 116.82 4.54 Q 117.5 4.38 118.18 4.38 Q 120.46 4.38 121.42 5.72 Q 122.38 7.06 122.38 9.34 L 122.38 15.04 L 120.96 15.04 L 120.86 13.7 Q 120.42 14.3 119.8 14.62 Q 119.18 14.94 118.53 15.05 Q 117.88 15.16 117.3 15.16 Q 116.58 15.16 115.91 14.97 Q 115.24 14.78 114.71 14.39 Q 114.18 14 113.87 13.41 Q 113.56 12.82 113.56 12.04 Q 113.56 11.14 113.89 10.52 Q 114.22 9.9 114.78 9.54 Q 115.34 9.18 116.08 9.02 Q 116.82 8.86 117.62 8.86 Z M 94.86 15.04 L 93.16 15.04 L 93.16 4.5 L 94.86 4.5 L 94.86 15.04 Z M 6.5 2.42 L 3.58 10.42 L 9.42 10.42 L 6.5 2.42 Z M 19 13.66 Q 20.06 13.66 20.78 13.12 Q 21.5 12.58 21.88 11.68 Q 22.26 10.78 22.26 9.72 Q 22.26 8.62 21.89 7.76 Q 21.52 6.9 20.8 6.4 Q 20.08 5.9 18.98 5.9 Q 17.84 5.9 17.15 6.42 Q 16.46 6.94 16.15 7.82 Q 15.84 8.7 15.84 9.78 Q 15.84 10.9 16.16 11.78 Q 16.48 12.66 17.18 13.16 Q 17.88 13.66 19 13.66 Z M 44.94 10.8 L 44.94 10.28 L 43.08 10.28 Q 42.42 10.28 41.78 10.3 Q 41.14 10.32 40.62 10.46 Q 40.1 10.6 39.79 10.94 Q 39.48 11.28 39.48 11.92 Q 39.48 12.52 39.79 12.9 Q 40.1 13.28 40.61 13.47 Q 41.12 13.66 41.68 13.66 Q 42.68 13.66 43.41 13.33 Q 44.14 13 44.54 12.36 Q 44.94 11.72 44.94 10.8 Z M 78.56 10.8 L 78.56 10.28 L 76.7 10.28 Q 76.04 10.28 75.4 10.3 Q 74.76 10.32 74.24 10.46 Q 73.72 10.6 73.41 10.94 Q 73.1 11.28 73.1 11.92 Q 73.1 12.52 73.41 12.9 Q 73.72 13.28 74.23 13.47 Q 74.74 13.66 75.3 13.66 Q 76.3 13.66 77.03 13.33 Q 77.76 13 78.16 12.36 Q 78.56 11.72 78.56 10.8 Z M 120.72 10.8 L 120.72 10.28 L 118.86 10.28 Q 118.2 10.28 117.56 10.3 Q 116.92 10.32 116.4 10.46 Q 115.88 10.6 115.57 10.94 Q 115.26 11.28 115.26 11.92 Q 115.26 12.52 115.57 12.9 Q 115.88 13.28 116.39 13.47 Q 116.9 13.66 117.46 13.66 Q 118.46 13.66 119.19 13.33 Q 119.92 13 120.32 12.36 Q 120.72 11.72 120.72 10.8 Z M 76.82 2.82 L 75.28 2.82 L 76.98 0 L 78.82 0 L 76.82 2.82 Z M 94 2.94 Q 93.48 2.94 93.17 2.62 Q 92.86 2.3 92.86 1.8 Q 92.86 1.3 93.18 0.99 Q 93.5 0.68 94 0.68 Q 94.46 0.68 94.81 1 Q 95.16 1.32 95.16 1.8 Q 95.16 2.3 94.82 2.62 Q 94.48 2.94 94 2.94 Z"
+            vector-effect="non-scaling-stroke"></path></g
+        ></svg
+      >
+    </a>
+  </div>
+  <div class="m-4">
+    <ul class="mb-4 flex flex-col gap-1">
+      <li>
+        <a aria-current={isActive('/admin') ? 'page' : undefined} class={isActive('/admin') ? 'active' : ''}>
+          <button
+            class={isActive('/admin') ? activeClasses : inactiveClasses}
+            type="button"
+            onclick="window.location.href = '/admin'"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              class="w-5 h-5 text-inherit"
+            >
+              <path
+                d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"
+              ></path>
+              <path
+                d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"
+              ></path>
+            </svg>
+            <p
+              class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+            >
+              inicio
+            </p>
+          </button>
+        </a>
+      </li>
+      <li>
+        <a class={isActive('/admin/usuarios') ? 'active' : ''} href="#">
+          <button
+            class={isActive('/admin/usuarios') ? activeClasses : inactiveClasses}
+            type="button"
+            onclick="window.location.href = '/admin/usuarios'"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              class="w-5 h-5 text-inherit"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <p
+              class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+            >
+              usuarios
+            </p>
+          </button>
+        </a>
+      </li>
+      <li>
+        <a class={isActive('/admin/productos') ? 'active' : ''} href="#">
+          <button
+            class={isActive('/admin/productos') ? activeClasses : inactiveClasses}
+            type="button"
+            onclick="window.location.href = '/admin/productos'"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              class="w-5 h-5 text-inherit"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <p
+              class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+            >
+              productos
+            </p>
+          </button>
+        </a>
+      </li>
+      <li>
+        <a class={isActive('/admin/ordenes') ? 'active' : ''} href="#">
+          <button
+            class={isActive('/admin/ordenes') ? activeClasses : inactiveClasses}
+            type="button"
+            onclick="window.location.href = '/admin/ordenes'"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              class="w-5 h-5 text-inherit"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <p
+              class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+            >
+              ordenes
+            </p>
+          </button>
+        </a>
+      </li>
+    </ul>
+    <ul class="mb-4 flex flex-col gap-1">
+      <li class="mx-3.5 mt-4 mb-2">
+        <p
+          class="block antialiased font-sans text-sm leading-normal text-white font-black uppercase opacity-75"
+        >
+          cuenta
+        </p>
+      </li>
+      <li>
+        <a class="" href="#">
+          <button
+            class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize cursor-pointer"
+            type="button"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              class="w-5 h-5 text-inherit"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <p
+              class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+            >
+              iniciar sesión
+            </p>
+          </button>
+        </a>
+      </li>
+      <li>
+        <a class="" href="#">
+          <button
+            class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+            type="button"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              class="w-5 h-5 text-inherit"
+            >
+              <path
+                d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"
+              ></path>
+            </svg>
+            <p
+              class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+            >
+              cerrar sesión
+            </p>
+          </button>
+        </a>
+      </li>
+    </ul>
+  </div>
+</aside>
