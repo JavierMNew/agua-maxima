@@ -130,6 +130,7 @@ import SectionContainer from "../components/SectionContainer.astro";
                 type="button"
                 id="whatsapp-btn"
                 class="flex-1 bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-all duration-300 text-center flex items-center justify-center cursor-pointer"
+                title="Completa todos los campos (incluyendo el mensaje) para enviar por WhatsApp"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -212,18 +213,111 @@ import SectionContainer from "../components/SectionContainer.astro";
     const newWhatsappBtn = document.getElementById("whatsapp-btn");
     const newForm = document.getElementById("contact-form");
 
+    // Función para verificar campos obligatorios y actualizar estado del botón
+    function updateWhatsAppButtonState() {
+      if (!newForm || !newWhatsappBtn) return;
+      
+      const formData = new FormData(newForm as HTMLFormElement);
+      const nombre = formData.get("nombre")?.toString().trim() || "";
+      const telefono = formData.get("telefono")?.toString().trim() || "";
+      const email = formData.get("email")?.toString().trim() || "";
+      const tema = formData.get("tema")?.toString().trim() || "";
+      const mensaje = formData.get("mensaje")?.toString().trim() || "";
+      
+      const allFieldsComplete = nombre && telefono && email && tema && mensaje;
+      
+      if (allFieldsComplete) {
+        newWhatsappBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+        newWhatsappBtn.classList.add('cursor-pointer');
+        newWhatsappBtn.title = "Enviar consulta por WhatsApp";
+      } else {
+        newWhatsappBtn.classList.add('opacity-60', 'cursor-not-allowed');
+        newWhatsappBtn.classList.remove('cursor-pointer');
+        newWhatsappBtn.title = "Completa todos los campos (incluyendo el mensaje) para enviar por WhatsApp";
+      }
+    }
+
+    // Agregar listeners para actualizar estado del botón en tiempo real
+    if (newForm) {
+      const inputs = newForm.querySelectorAll('input[required], select[required], textarea[required]');
+      inputs.forEach(input => {
+        input.addEventListener('input', updateWhatsAppButtonState);
+        input.addEventListener('change', updateWhatsAppButtonState);
+      });
+    }
+
+    // Verificar estado inicial
+    updateWhatsAppButtonState();
+
     newWhatsappBtn?.addEventListener("click", function () {
       if (!newForm) return;
 
       const formData = new FormData(newForm as HTMLFormElement);
 
-      const nombre = formData.get("nombre") || "";
-      const email = formData.get("email") || "";
-      const telefono = formData.get("telefono") || "";
-      const tema = formData.get("tema") || "";
-      const mensaje = formData.get("mensaje") || "";
+      const nombre = (formData.get("nombre") as string) || "";
+      const email = (formData.get("email") as string) || "";
+      const telefono = (formData.get("telefono") as string) || "";
+      const tema = (formData.get("tema") as string) || "";
+      const mensaje = (formData.get("mensaje") as string) || "";
 
-      const temasMap = {
+      // ✅ VALIDACIÓN OBLIGATORIA: Verificar que todos los campos estén completos
+      const camposObligatorios = [
+        { valor: nombre.trim(), nombre: "Nombre completo" },
+        { valor: telefono.trim(), nombre: "Teléfono" },
+        { valor: email.trim(), nombre: "Correo electrónico" },
+        { valor: tema.trim(), nombre: "Tema de consulta" },
+        { valor: mensaje.trim(), nombre: "Mensaje" }
+      ];
+
+      // Verificar si algún campo obligatorio está vacío
+      const campoVacio = camposObligatorios.find(campo => !campo.valor);
+      
+      if (campoVacio) {
+        // Mostrar mensaje de error específico
+        showErrorNotification(`⚠️ ${campoVacio.nombre} es obligatorio para continuar con WhatsApp`);
+        
+        // Enfocar el campo vacío
+        let campoInput: Element | null = null;
+        
+        // Mapear nombres a selectores específicos
+        const selectorMap: { [key: string]: string } = {
+          "Nombre completo": "[name='nombre']",
+          "Teléfono": "[name='telefono']", 
+          "Correo electrónico": "[name='email']",
+          "Tema de consulta": "[name='tema']",
+          "Mensaje": "[name='mensaje']"
+        };
+        
+        campoInput = newForm.querySelector(selectorMap[campoVacio.nombre]);
+        
+        if (campoInput) {
+          (campoInput as HTMLElement).focus();
+          // Agregar animación de error al campo
+          campoInput.classList.add('border-red-500', 'animate-pulse');
+          setTimeout(() => {
+            campoInput.classList.remove('border-red-500', 'animate-pulse');
+          }, 2000);
+        }
+        
+        return; // ❌ Detener ejecución si falta algún campo
+      }
+
+      // Validación adicional de formato de email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showErrorNotification("⚠️ Por favor ingresa un correo electrónico válido");
+        const emailInput = newForm.querySelector('[name="email"]');
+        if (emailInput) {
+          (emailInput as HTMLElement).focus();
+          emailInput.classList.add('border-red-500', 'animate-pulse');
+          setTimeout(() => {
+            emailInput.classList.remove('border-red-500', 'animate-pulse');
+          }, 2000);
+        }
+        return;
+      }
+
+      const temasMap: { [key: string]: string } = {
         "solicitar-entrega": "solicitar entrega de agua",
         "informacion-productos": "información de productos",
         "precios-tarifas": "precios y tarifas",

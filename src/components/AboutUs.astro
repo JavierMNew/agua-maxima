@@ -1,0 +1,149 @@
+---
+import { slide } from "astro:transitions";
+---
+
+<!-- Sección: ¿Quiénes Somos? -->
+<section id="about-us" class="py-24 relative">
+  <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
+    <div
+      class="w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1"
+    >
+      <div
+        class="w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last"
+      >
+        <div
+          class="pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5 flex"
+        >
+          <img
+            class="rounded-xl object-cover"
+            src="/src/assets/generica1.jpg"
+            alt="Agua Máxima Purificación"
+          />
+        </div>
+        <img
+          class="sm:ml-0 ml-auto rounded-xl object-cover"
+          src="/src/assets/generica2.jpg"
+          alt="Proceso de purificación"
+        />
+      </div>
+      <div
+        class="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex"
+      >
+        <div class="w-full flex-col justify-center items-start gap-8 flex">
+          <div
+            class="w-full flex-col justify-start lg:items-start items-center gap-3 flex"
+          >
+            <h2
+              class="text-gray-900 text-4xl font-bold leading-normal lg:text-start text-center"
+            >
+              Pureza que transforma vidas
+            </h2>
+            <p
+              class="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center"
+            >
+              En Agua Máxima nos dedicamos a brindar agua purificada de la más
+              alta calidad para tu hogar y negocio. Cada gota pasa por un
+              riguroso proceso de purificación que garantiza la máxima seguridad
+              y pureza. Nuestro compromiso es cuidar la salud de tu familia
+              mientras ofrecemos un servicio confiable y oportuno.
+            </p>
+          </div>
+          <div
+            class="w-full lg:justify-start justify-center items-center sm:gap-8 gap-4 inline-flex"
+          >
+            <!-- 100% Purificada -->
+            <div class="flex-col justify-start items-center inline-flex">
+              <div
+                class="bg-[#bae7fd] border-2 border-[#7dd5fc] w-12 h-12 rounded-full flex items-center justify-center mb-2 hover:bg-[#7dd5fc] transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0288c7"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+              </div>
+              <h6
+                class="text-gray-900 text-sm font-semibold leading-relaxed text-center"
+              >
+                100% Purificada
+              </h6>
+            </div>
+            <!-- Entregas Rápidas -->
+            <div class="flex-col justify-start items-center inline-flex">
+              <div
+                class="bg-[#bae7fd] border-2 border-[#7dd5fc] w-12 h-12 rounded-full flex items-center justify-center mb-2 hover:bg-[#7dd5fc] transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0288c7"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m12 19 7-7 3 3-7 7-3-3z"></path>
+                  <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                  <path d="m2 2 7.586 7.586"></path>
+                  <circle cx="11" cy="11" r="2"></circle>
+                </svg>
+              </div>
+              <h6
+                class="text-gray-900 text-sm font-semibold leading-relaxed text-center"
+              >
+                Entregas Rápidas
+              </h6>
+            </div>
+            <!-- Certificada y Segura -->
+            <div class="flex-col justify-start items-center inline-flex">
+              <div
+                class="bg-[#bae7fd] border-2 border-[#7dd5fc] w-12 h-12 rounded-full flex items-center justify-center mb-2 hover:bg-[#7dd5fc] transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#0288c7"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M9 12l2 2 4-4"></path>
+                  <path
+                    d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"
+                  ></path>
+                  <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                </svg>
+              </div>
+              <h6
+                class="text-gray-900 text-sm font-semibold leading-relaxed text-center"
+              >
+                Certificada y Segura
+              </h6>
+            </div>
+          </div>
+        </div>
+        <button
+          class="sm:w-fit w-full px-3.5 py-2 bg-[#0288c7] hover:bg-[#083049] transition-all duration-700 ease-in-out rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] justify-center items-center flex"
+        >
+          <span class="px-1.5 text-white text-sm font-medium leading-6"
+            >Conoce Más</span
+          >
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
