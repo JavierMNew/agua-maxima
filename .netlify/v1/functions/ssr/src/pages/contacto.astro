@@ -1,0 +1,489 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+---
+
+<Layout title="Contacto - Agua Máxima">
+  <SectionContainer>
+    <!-- Formulario de Contacto -->
+    <div class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto mt-20">
+      <div class="rounded-2xl p-8 md:p-12">
+        <div class="text-center mb-10">
+          <h3 class="text-3xl font-bold text-gray-900 mb-4">
+            ¿Necesitas ayuda específica?
+          </h3>
+          <p class="text-gray-600 text-lg">
+            Selecciona el tema de tu consulta y nos pondremos en contacto
+            contigo
+          </p>
+        </div>
+
+        <div class="max-w-2xl mx-auto">
+          <form id="contact-form" class="space-y-6">
+            <!-- Información personal -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label
+                  for="nombre"
+                  class="block text-sm font-semibold text-gray-900 mb-2"
+                  >Nombre completo *</label
+                >
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0288c7] focus:border-transparent outline-none transition-all duration-300"
+                  placeholder="Tu nombre completo"
+                />
+              </div>
+              <div>
+                <label
+                  for="telefono"
+                  class="block text-sm font-semibold text-gray-900 mb-2"
+                  >Teléfono *</label
+                >
+                <input
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  required
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0288c7] focus:border-transparent outline-none transition-all duration-300"
+                  placeholder="+52 961 123 4567"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-semibold text-gray-900 mb-2"
+                >Correo electrónico *</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0288c7] focus:border-transparent outline-none transition-all duration-300"
+                placeholder="tu@email.com"
+              />
+            </div>
+
+            <!-- Selector de tema -->
+            <div>
+              <label
+                for="tema"
+                class="block text-sm font-semibold text-gray-900 mb-2"
+                >Tema de consulta *</label
+              >
+              <select
+                id="tema"
+                name="tema"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0288c7] focus:border-transparent outline-none transition-all duration-300 bg-white"
+              >
+                <option value="">Selecciona un tema</option>
+                <option value="solicitar-entrega"
+                  >🚚 Solicitar entrega de agua</option
+                >
+                <option value="informacion-productos"
+                  >💧 Información de productos</option
+                >
+                <option value="precios-tarifas">💰 Precios y tarifas</option>
+                <option value="servicio-cliente">🤝 Servicio al cliente</option>
+                <option value="reclamos-sugerencias"
+                  >📝 Reclamos o sugerencias</option
+                >
+                <option value="convenios-empresas"
+                  >🏢 Convenios para empresas</option
+                >
+                <option value="otros">❓ Otros temas</option>
+              </select>
+            </div>
+
+            <!-- Mensaje -->
+            <div>
+              <label
+                for="mensaje"
+                class="block text-sm font-semibold text-gray-900 mb-2"
+                >Mensaje *</label
+              >
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="5"
+                required
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0288c7] focus:border-transparent outline-none resize-none transition-all duration-300"
+                placeholder="Describe tu consulta o solicitud..."></textarea>
+            </div>
+
+            <!-- Botones -->
+            <div class="flex flex-col sm:flex-row gap-4 pt-6">
+              <button
+                type="submit"
+                class="flex-1 bg-[#0288c7] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#083049] transition-all duration-300 focus:ring-2 focus:ring-[#0288c7] focus:ring-offset-2 cursor-pointer"
+              >
+                📧 Enviar correo
+              </button>
+              <button
+                type="button"
+                id="whatsapp-btn"
+                class="flex-1 bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-all duration-300 text-center flex items-center justify-center cursor-pointer"
+                title="Completa todos los campos (incluyendo el mensaje) para enviar por WhatsApp"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="mr-2"
+                >
+                  <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
+                  <path
+                    d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"
+                  ></path>
+                </svg>
+                WhatsApp directo
+              </button>
+            </div>
+
+            <!-- Nota informativa -->
+            <div
+              class="bg-[#bae7fd] border border-[#7dd5fc] rounded-lg p-4 mt-6"
+            >
+              <div class="flex items-start">
+                <div
+                  class="bg-[#0288c7] w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 16v-4"></path>
+                    <path d="M12 8h.01"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-700 font-medium mb-1">
+                    Tiempo de respuesta
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    Nos pondremos en contacto contigo en un máximo de 2 horas
+                    durante horario laboral (8:00 AM - 6:00 PM). Para consultas
+                    urgentes, usa WhatsApp directo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </SectionContainer>
+</Layout>
+
+<script>
+  function initializeContactForm() {
+    const whatsappBtn = document.getElementById("whatsapp-btn");
+    const form = document.getElementById("contact-form");
+
+    // Remover event listeners existentes para evitar duplicados
+    if (whatsappBtn) {
+      whatsappBtn.replaceWith(whatsappBtn.cloneNode(true));
+    }
+    if (form) {
+      form.replaceWith(form.cloneNode(true));
+    }
+
+    // Obtener referencias actualizadas después del clonado
+    const newWhatsappBtn = document.getElementById("whatsapp-btn");
+    const newForm = document.getElementById("contact-form");
+
+    // Función para verificar campos obligatorios y actualizar estado del botón
+    function updateWhatsAppButtonState() {
+      if (!newForm || !newWhatsappBtn) return;
+      
+      const formData = new FormData(newForm as HTMLFormElement);
+      const nombre = formData.get("nombre")?.toString().trim() || "";
+      const telefono = formData.get("telefono")?.toString().trim() || "";
+      const email = formData.get("email")?.toString().trim() || "";
+      const tema = formData.get("tema")?.toString().trim() || "";
+      const mensaje = formData.get("mensaje")?.toString().trim() || "";
+      
+      const allFieldsComplete = nombre && telefono && email && tema && mensaje;
+      
+      if (allFieldsComplete) {
+        newWhatsappBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+        newWhatsappBtn.classList.add('cursor-pointer');
+        newWhatsappBtn.title = "Enviar consulta por WhatsApp";
+      } else {
+        newWhatsappBtn.classList.add('opacity-60', 'cursor-not-allowed');
+        newWhatsappBtn.classList.remove('cursor-pointer');
+        newWhatsappBtn.title = "Completa todos los campos (incluyendo el mensaje) para enviar por WhatsApp";
+      }
+    }
+
+    // Agregar listeners para actualizar estado del botón en tiempo real
+    if (newForm) {
+      const inputs = newForm.querySelectorAll('input[required], select[required], textarea[required]');
+      inputs.forEach(input => {
+        input.addEventListener('input', updateWhatsAppButtonState);
+        input.addEventListener('change', updateWhatsAppButtonState);
+      });
+    }
+
+    // Verificar estado inicial
+    updateWhatsAppButtonState();
+
+    newWhatsappBtn?.addEventListener("click", function () {
+      if (!newForm) return;
+
+      const formData = new FormData(newForm as HTMLFormElement);
+
+      const nombre = (formData.get("nombre") as string) || "";
+      const email = (formData.get("email") as string) || "";
+      const telefono = (formData.get("telefono") as string) || "";
+      const tema = (formData.get("tema") as string) || "";
+      const mensaje = (formData.get("mensaje") as string) || "";
+
+      // ✅ VALIDACIÓN OBLIGATORIA: Verificar que todos los campos estén completos
+      const camposObligatorios = [
+        { valor: nombre.trim(), nombre: "Nombre completo" },
+        { valor: telefono.trim(), nombre: "Teléfono" },
+        { valor: email.trim(), nombre: "Correo electrónico" },
+        { valor: tema.trim(), nombre: "Tema de consulta" },
+        { valor: mensaje.trim(), nombre: "Mensaje" }
+      ];
+
+      // Verificar si algún campo obligatorio está vacío
+      const campoVacio = camposObligatorios.find(campo => !campo.valor);
+      
+      if (campoVacio) {
+        // Mostrar mensaje de error específico
+        showErrorNotification(`⚠️ ${campoVacio.nombre} es obligatorio para continuar con WhatsApp`);
+        
+        // Enfocar el campo vacío
+        let campoInput: Element | null = null;
+        
+        // Mapear nombres a selectores específicos
+        const selectorMap: { [key: string]: string } = {
+          "Nombre completo": "[name='nombre']",
+          "Teléfono": "[name='telefono']", 
+          "Correo electrónico": "[name='email']",
+          "Tema de consulta": "[name='tema']",
+          "Mensaje": "[name='mensaje']"
+        };
+        
+        campoInput = newForm.querySelector(selectorMap[campoVacio.nombre]);
+        
+        if (campoInput) {
+          (campoInput as HTMLElement).focus();
+          // Agregar animación de error al campo
+          campoInput.classList.add('border-red-500', 'animate-pulse');
+          setTimeout(() => {
+            campoInput.classList.remove('border-red-500', 'animate-pulse');
+          }, 2000);
+        }
+        
+        return; // ❌ Detener ejecución si falta algún campo
+      }
+
+      // Validación adicional de formato de email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showErrorNotification("⚠️ Por favor ingresa un correo electrónico válido");
+        const emailInput = newForm.querySelector('[name="email"]');
+        if (emailInput) {
+          (emailInput as HTMLElement).focus();
+          emailInput.classList.add('border-red-500', 'animate-pulse');
+          setTimeout(() => {
+            emailInput.classList.remove('border-red-500', 'animate-pulse');
+          }, 2000);
+        }
+        return;
+      }
+
+      const temasMap: { [key: string]: string } = {
+        "solicitar-entrega": "solicitar entrega de agua",
+        "informacion-productos": "información de productos",
+        "precios-tarifas": "precios y tarifas",
+        "servicio-cliente": "servicio al cliente",
+        "reclamos-sugerencias": "reclamos o sugerencias",
+        "convenios-empresas": "convenios para empresas",
+        otros: "otros temas",
+      };
+
+      let whatsappMessage = "¡Hola!";
+
+      if (nombre) {
+        whatsappMessage += ` Mi nombre es ${nombre}.`;
+      }
+
+      if (tema) {
+        const temaTraducido = temasMap[tema] || tema;
+        whatsappMessage += ` Tengo una consulta sobre ${temaTraducido}.`;
+      }
+
+      if (mensaje) {
+        whatsappMessage += ` Mi mensaje es el siguiente:\n\n"${mensaje}"`;
+      }
+
+      whatsappMessage += "\n\n¡Espero su respuesta!";
+
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+
+      const whatsappUrl = `https://wa.me/529931156969?text=${encodedMessage}`;
+      
+      // Save WhatsApp URL for success page
+      sessionStorage.setItem('whatsappUrl', whatsappUrl);
+      
+      // Open WhatsApp and redirect immediately
+      window.open(whatsappUrl, "_blank");
+      window.location.href = "/contacto/exito-whatsapp";
+    });
+
+    newForm?.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      
+      console.log("Formulario enviado");
+      
+      if (!newForm) return;
+      
+      const formData = new FormData(newForm as HTMLFormElement);
+      const data = Object.fromEntries(formData);
+      
+      console.log("Datos del formulario:", data);
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        console.log("Respuesta del servidor:", response.status);
+
+        if (response.ok) {
+          (newForm as HTMLFormElement).reset();
+          window.location.href = "/contacto/exito-correo";
+        } else {
+          const errorData = await response.json();
+          console.error("Error del servidor:", errorData);
+          window.location.href = "/404";
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        window.location.href = "/404";
+      }
+    });
+  }
+
+  // Custom notification functions
+  function showSuccessNotification(message: string) {
+    createNotification(message, 'success');
+  }
+
+  function showErrorNotification(message: string) {
+    createNotification(message, 'error');
+  }
+
+  function createNotification(message: string, type: 'success' | 'error') {
+    // Remove any existing notifications
+    const existingNotification = document.querySelector('.custom-notification');
+    if (existingNotification) {
+      existingNotification.remove();
+    }
+
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `custom-notification fixed top-6 right-6 z-50 max-w-md p-4 rounded-lg shadow-lg transform translate-x-full transition-all duration-300 ease-in-out`;
+    
+    if (type === 'success') {
+      notification.classList.add('bg-green-500', 'text-white');
+      notification.innerHTML = `
+        <div class="flex items-center">
+          <svg class="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          <div>
+            <p class="font-medium">${message}</p>
+            <p class="text-sm opacity-90 mt-1">Redirigiendo a página de confirmación...</p>
+          </div>
+          <button class="ml-4 text-white hover:text-gray-200 flex-shrink-0" onclick="this.parentElement.parentElement.remove()">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      `;
+    } else {
+      notification.classList.add('bg-red-500', 'text-white');
+      notification.innerHTML = `
+        <div class="flex items-center">
+          <svg class="w-6 h-6 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <div>
+            <p class="font-medium">${message}</p>
+          </div>
+          <button class="ml-4 text-white hover:text-gray-200 flex-shrink-0" onclick="this.parentElement.parentElement.remove()">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      `;
+    }
+
+    // Add to page
+    document.body.appendChild(notification);
+
+    // Animate in
+    setTimeout(() => {
+      notification.classList.remove('translate-x-full');
+    }, 100);
+
+    // Auto remove after 5 seconds (except for success which redirects)
+    if (type === 'error') {
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.classList.add('translate-x-full');
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.remove();
+            }
+          }, 300);
+        }
+      }, 5000);
+    }
+  }
+
+  // Ejecutar inmediatamente si el DOM ya está listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeContactForm);
+  } else {
+    initializeContactForm();
+  }
+
+  // También ejecutar cuando la página es visible (para navegación entre páginas)
+  document.addEventListener('astro:page-load', initializeContactForm);
+  
+  // Backup para navegación manual
+  window.addEventListener('load', initializeContactForm);
+</script>

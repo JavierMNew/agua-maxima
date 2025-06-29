@@ -1,0 +1,151 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionContainer from "../../components/SectionContainer.astro";
+---
+
+<Layout 
+  title="Mensaje Enviado - Agua Máxima" 
+  description="Tu mensaje ha sido enviado exitosamente por correo"
+>
+  <SectionContainer>
+    <div class="relative isolate px-6 pt-14 pb-20 lg:px-8 min-h-screen flex items-center">
+      <div class="mx-auto max-w-4xl text-center">
+        
+        <!-- Success Animation -->
+        <div class="mb-8">
+          <div class="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+            <svg class="w-12 h-12 text-[#0288c7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          
+          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">
+            <span class="text-[#0288c7]">¡Consulta</span>
+            <span class="text-[#083049]">Recibida!</span>
+          </h1>
+          
+          <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Hemos recibido tu consulta exitosamente. Nuestro equipo se pondrá en contacto contigo dentro de las próximas 2 horas.
+          </p>
+        </div>
+
+        <!-- Status Steps -->
+        <div class="mb-12">
+          <div class="flex items-center justify-center space-x-4 md:space-x-8">
+            <div class="flex items-center">
+              <div class="w-8 h-8 bg-[#0288c7] text-white rounded-full flex items-center justify-center text-sm font-medium">
+                ✓
+              </div>
+              <span class="ml-2 text-sm font-medium text-[#0288c7]">Información</span>
+            </div>
+            <div class="w-8 h-0.5 bg-[#0288c7]"></div>
+            <div class="flex items-center">
+              <div class="w-8 h-8 bg-[#0288c7] text-white rounded-full flex items-center justify-center text-sm font-medium">
+                ✓
+              </div>
+              <span class="ml-2 text-sm font-medium text-[#0288c7]">Validación</span>
+            </div>
+            <div class="w-8 h-0.5 bg-[#0288c7]"></div>
+            <div class="flex items-center">
+              <div class="w-8 h-8 bg-[#0288c7] text-white rounded-full flex items-center justify-center text-sm font-medium">
+                ✓
+              </div>
+              <span class="ml-2 text-sm font-medium text-[#0288c7]">Recibido</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Consultation Info -->
+        <div class="bg-gradient-to-br from-[#bae7fd] to-blue-100 rounded-xl border border-[#7dd5fc] p-6 mb-8">
+          <div class="flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-[#0288c7] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h2 class="text-lg font-semibold text-gray-900">Consulta Procesada Exitosamente</h2>
+          </div>
+          <p class="text-gray-700 mb-4">
+            Tu información ha llegado a nuestro equipo. Nos pondremos en contacto contigo por el medio más conveniente según tu consulta.
+          </p>
+          <div class="bg-white/50 rounded-lg p-4">
+            <p class="text-sm text-gray-600">
+              <strong>Tiempo de contacto estimado:</strong> 30 minutos - 2 horas<br>
+              <strong>Horario de atención:</strong> Lunes a Domingo, 8:00 AM - 6:00 PM<br>
+              <strong>Te contactaremos por:</strong> Email, WhatsApp o llamada telefónica
+            </p>
+          </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+          <div class="bg-white rounded-xl border border-[#7dd5fc]/30 p-6 text-center">
+            <div class="w-16 h-16 bg-[#bae7fd]/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-[#0288c7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[#083049] mb-2">Recepción</h3>
+            <p class="text-gray-600 text-sm">Tu consulta ha llegado a nuestro equipo y la hemos registrado exitosamente</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-[#7dd5fc]/30 p-6 text-center">
+            <div class="w-16 h-16 bg-[#bae7fd]/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-[#0288c7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 3l-6 6m0 0V4m0 5h5M5 3a2 2 0 00-2 2v1c0 8.284 6.716 15 15 15h1a2 2 0 002-2v-3.28a1 1 0 00-.684-.948l-4.493-1.498a1 1 0 00-1.21.502l-1.13 2.257a11.042 11.042 0 01-5.516-5.517l2.257-1.128a1 1 0 00.502-1.21L9.228 3.683A1 1 0 008.279 3H5z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[#083049] mb-2">Contacto</h3>
+            <p class="text-gray-600 text-sm">Nos comunicaremos contigo por email, WhatsApp o llamada según tu preferencia</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-[#7dd5fc]/30 p-6 text-center">
+            <div class="w-16 h-16 bg-[#bae7fd]/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-[#0288c7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-[#083049] mb-2">Servicio</h3>
+            <p class="text-gray-600 text-sm">Te brindaremos atención personalizada para resolver tu consulta o solicitud</p>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contacto" 
+             class="inline-flex items-center px-6 py-3 text-[#0288c7] border-2 border-[#0288c7] rounded-lg font-medium hover:bg-[#0288c7] hover:text-white transition-all duration-300">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+            Nueva Consulta
+          </a>
+          
+          <a href="/" 
+             class="inline-flex items-center px-6 py-3 bg-[#083049] hover:bg-[#0288c7] text-white font-medium rounded-lg transition-all duration-300">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Volver al Inicio
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </SectionContainer>
+</Layout>
+
+<style>
+  /* Success animation */
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+</style> 
