@@ -15,7 +15,7 @@ import {
     <!-- Logo -->
     <div class="flex items-center">
       <a href="/">
-        <img src="/public/logo.webp" alt="Agua Máxima" class="w-10 h-10">
+        <img src="/public/logo.webp" alt="Agua Máxima" class="w-10 h-10" />
       </a>
     </div>
 
@@ -38,7 +38,13 @@ import {
     <div class="hidden md:flex items-center gap-3 justify-end">
       <!-- User Button -->
       <SignedOut>
-        <SignInButton mode="modal" />
+        <SignInButton asChild mode="modal">
+          <button
+            class="bg-[#0288c7] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#083049] transition-colors duration-300 cursor-pointer"
+          >
+            Iniciar Sesión
+          </button>
+        </SignInButton>
       </SignedOut>
       <SignedIn>
         <UserButton />
@@ -127,62 +133,89 @@ import {
 </header>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Mobile Menu Functionality
+  // Función para inicializar el menú móvil
+  function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
     const menuIconClosed = document.getElementById("menu-icon-closed");
     const menuIconOpen = document.getElementById("menu-icon-open");
 
     if (mobileMenuButton && mobileMenu && menuIconClosed && menuIconOpen) {
-      mobileMenuButton.addEventListener("click", function () {
-        const isExpanded =
-          mobileMenuButton.getAttribute("aria-expanded") === "true";
+      // Remover event listeners existentes para evitar duplicados
+      const newButton = mobileMenuButton.cloneNode(true);
+      mobileMenuButton.parentNode?.replaceChild(newButton, mobileMenuButton);
 
-        // Toggle menu visibility
-        mobileMenu.classList.toggle("hidden");
+      // Obtener las nuevas referencias después del clone
+      const newMobileMenuButton = document.getElementById("mobile-menu-button");
+      const newMobileMenu = document.getElementById("mobile-menu");
+      const newMenuIconClosed = document.getElementById("menu-icon-closed");
+      const newMenuIconOpen = document.getElementById("menu-icon-open");
 
-        // Toggle icons
-        menuIconClosed.classList.toggle("hidden");
-        menuIconClosed.classList.toggle("block");
-        menuIconOpen.classList.toggle("hidden");
-        menuIconOpen.classList.toggle("block");
+      if (
+        newMobileMenuButton &&
+        newMobileMenu &&
+        newMenuIconClosed &&
+        newMenuIconOpen
+      ) {
+        newMobileMenuButton.addEventListener("click", function () {
+          const isExpanded =
+            newMobileMenuButton.getAttribute("aria-expanded") === "true";
 
-        // Update aria-expanded
-        mobileMenuButton.setAttribute(
-          "aria-expanded",
-          (!isExpanded).toString()
-        );
-      });
+          // Toggle menu visibility
+          newMobileMenu.classList.toggle("hidden");
 
-      // Close menu when clicking on links
-      const mobileLinks = mobileMenu.querySelectorAll("a");
-      mobileLinks.forEach((link) => {
-        link.addEventListener("click", function () {
-          mobileMenu.classList.add("hidden");
-          menuIconClosed.classList.remove("hidden");
-          menuIconClosed.classList.add("block");
-          menuIconOpen.classList.add("hidden");
-          menuIconOpen.classList.remove("block");
-          mobileMenuButton.setAttribute("aria-expanded", "false");
+          // Toggle icons
+          newMenuIconClosed.classList.toggle("hidden");
+          newMenuIconClosed.classList.toggle("block");
+          newMenuIconOpen.classList.toggle("hidden");
+          newMenuIconOpen.classList.toggle("block");
+
+          // Update aria-expanded
+          newMobileMenuButton.setAttribute(
+            "aria-expanded",
+            (!isExpanded).toString()
+          );
         });
-      });
 
-      // Close menu when clicking outside
-      document.addEventListener("click", function (event) {
-        const target = event.target as Node;
-        if (
-          !mobileMenuButton.contains(target) &&
-          !mobileMenu.contains(target)
-        ) {
-          mobileMenu.classList.add("hidden");
-          menuIconClosed.classList.remove("hidden");
-          menuIconClosed.classList.add("block");
-          menuIconOpen.classList.add("hidden");
-          menuIconOpen.classList.remove("block");
-          mobileMenuButton.setAttribute("aria-expanded", "false");
-        }
-      });
+        // Close menu when clicking on links
+        const mobileLinks = newMobileMenu.querySelectorAll("a");
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            newMobileMenu.classList.add("hidden");
+            newMenuIconClosed.classList.remove("hidden");
+            newMenuIconClosed.classList.add("block");
+            newMenuIconOpen.classList.add("hidden");
+            newMenuIconOpen.classList.remove("block");
+            newMobileMenuButton.setAttribute("aria-expanded", "false");
+          });
+        });
+
+        // Close menu when clicking outside
+        const handleOutsideClick = function (event: Event) {
+          const target = event.target as Node;
+          if (
+            !newMobileMenuButton.contains(target) &&
+            !newMobileMenu.contains(target)
+          ) {
+            newMobileMenu.classList.add("hidden");
+            newMenuIconClosed.classList.remove("hidden");
+            newMenuIconClosed.classList.add("block");
+            newMenuIconOpen.classList.add("hidden");
+            newMenuIconOpen.classList.remove("block");
+            newMobileMenuButton.setAttribute("aria-expanded", "false");
+          }
+        };
+
+        // Remover event listener anterior si existe
+        document.removeEventListener("click", handleOutsideClick);
+        document.addEventListener("click", handleOutsideClick);
+      }
     }
-  });
+  }
+
+  // Inicializar en la carga inicial de la página
+  document.addEventListener("DOMContentLoaded", initializeMobileMenu);
+
+  // Inicializar en cada navegación de página (para Astro Transitions)
+  document.addEventListener("astro:page-load", initializeMobileMenu);
 </script>
